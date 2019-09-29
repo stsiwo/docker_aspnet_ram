@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TestSwarm.Infrastructure;
 
 namespace TestSwarm.Controllers
 {
@@ -10,10 +11,21 @@ namespace TestSwarm.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+      public ApplicationDbContext _context;
+
+        public ValuesController(ApplicationDbContext context) {
+          _context = context;
+        }
+      
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            var blog = new Blog() {
+              Url = "test_url",
+            };
+            _context.Add<Blog>(blog);
+
             return new string[] { "value1", "value2" };
         }
 
