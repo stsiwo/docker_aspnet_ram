@@ -8,14 +8,14 @@ using TestSwarm.Infrastructure;
 namespace TestSwarm.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190929200152_Initial")]
-    partial class Initial
+    [Migration("20191002183608_InitalCreate")]
+    partial class InitalCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("TestSwarm.Infrastructure.Blog", b =>

@@ -30,10 +30,20 @@ namespace TestSwarm
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            var connection = "server=localhost;database=db;user=sts;password=sts1551@IWO";
-  
-            services.AddDbContext<ApplicationDbContext>(options => 
-                options.UseMySql(connection));
+            var connection = "server=db;uid=root;pwd=sts1551@IWO;database=db";
+
+            services.AddDbContextPool<ApplicationDbContext>(options =>
+                options.UseMySql(connection/*,
+                    mySqlOptions =>
+                    {
+                        mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql)
+                        .EnableRetryOnFailure(
+                            maxRetryCount: 10,
+                            maxRetryDelay: TimeSpan.FromSeconds(30),
+                            errorNumbersToAdd: null);
+                    }
+                */)
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
