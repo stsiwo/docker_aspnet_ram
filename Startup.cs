@@ -33,7 +33,7 @@ namespace TestSwarm
             var connection = "server=db;uid=root;pwd=sts1551@IWO;database=db";
 
             services.AddDbContextPool<ApplicationDbContext>(options =>
-                options.UseMySql(connection/*,
+                options.UseMySql(connection,
                     mySqlOptions =>
                     {
                         mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql)
@@ -42,7 +42,7 @@ namespace TestSwarm
                             maxRetryDelay: TimeSpan.FromSeconds(30),
                             errorNumbersToAdd: null);
                     }
-                */)
+                )
             );
         }
 
