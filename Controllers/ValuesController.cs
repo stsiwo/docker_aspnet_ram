@@ -16,17 +16,12 @@ namespace TestSwarm.Controllers
         public ValuesController(ApplicationDbContext context) {
           _context = context;
         }
-      
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<string> Get()
         {
-            var blog = new Blog() {
-              Url = "test_url",
-            };
-            _context.Add<Blog>(blog);
-
-            return new string[] { "value1", "value2" };
+            return "you did it!!!"; 
         }
 
         // GET api/values/5
